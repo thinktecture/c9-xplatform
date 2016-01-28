@@ -31,14 +31,14 @@ This is the toolchain we presented in our video series:
 Including, but not limited to…
 
 * [AdminLTE](https://github.com/almasaeed2010/AdminLTE), open source admin dashboard and control panel theme
-** [jQuery](), yeah – unfortunately.
+  * [jQuery](), yeah – unfortunately.
 * [Angular 2](https://angular.io), Single-Page Web Application (SPA) framework for the modern web
 * [Fastclick](https://github.com/ftlabs/fastclick), eliminates the infamous 300 ms lag on devices using the iPhone-style Touch Events
 * [Font Awesome](https://fortawesome.github.io/Font-Awesome/), the iconic font and CSS toolkit
 * [Gulp](http://gulpjs.com/), the streaming build system
-** [gulp-typescript](https://www.npmjs.com/package/gulp-typescript), TypeScript compiler for Gulp
+  * [gulp-typescript](https://www.npmjs.com/package/gulp-typescript), TypeScript compiler for Gulp
 * [Restify](http://restify.com/), Node.js module for building RESTful web services
-** [Restify CORS Middleware](https://github.com/TabDigital/restify-cors-middleware), middleware for enabling Cross-Origin Resource Sharing (CORS)
-** [OAuth2 server](https://www.npmjs.com/package/oauth2-server), OAuth 2.0 server for Node.js
+  * [Restify CORS Middleware](https://github.com/TabDigital/restify-cors-middleware), middleware for enabling Cross-Origin Resource Sharing (CORS)
+  * [OAuth2 server](https://www.npmjs.com/package/oauth2-server), OAuth 2.0 server for Node.js
 * [Sequelize](https://github.com/sequelize/sequelize), Node.js Object-Relational Mapper (ORM)
 * [SQLite 3](https://www.sqlite.org/), Self-contained SQL database engine
