@@ -1,0 +1,64 @@
+{
+  "name": "c9-xplatform",
+  "title": "channel9 CRM",
+  "companyName": "Thinktecture AG",
+  "copyright": "Copyright (C) 2016 - Thinktecture AG",
+  "version": "1.0.0",
+  "description": "Cross-platform samples for Channel 9",
+  "main": "index.js",
+  "dependencies": {
+    "admin-lte": "^2.3.2",
+    "bootstrap": "^3.3.6",
+    "fastclick": "^1.0.6",
+    "font-awesome": "^4.5.0",
+    "jquery": "^2.2.0",
+    "oauth2-server": "^2.4.1",
+    "reflect-metadata": "^0.1.3",
+    "restify": "^4.0.3",
+    "restify-cors-middleware": "0.0.6",
+    "sequelize": "^3.18.0",
+    "sqlite3": "^3.1.1",
+    "systemjs": "^0.19.17",
+    "zone.js": "^0.5.10"
+  },
+  "devDependencies": {
+    "angular2": "^2.0.0-beta.1",
+    "del": "^2.2.0",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "gulp": "^3.9.0",
+    "gulp-asar": "git+https://github.com/ThorstenHans/gulp-asar.git",
+    "gulp-awesome-electron": "git+https://github.com/ThorstenHans/gulp-awesome-electron.git",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-filelog": "^0.4.1",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-install": "^0.6.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-symdest": "^1.0.0",
+    "gulp-typescript": "^2.10.0",
+    "gulp-uglify": "^1.5.1",
+    "reflect-metadata": "^0.1.2",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5",
+    "rxjs": "^5.0.0-beta.0",
+    "zone.js": "^0.5.10"
+  },
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp default",
+    "build": "./node_modules/.bin/gulp build",
+    "server": "node src/backend/server.js",
+    "server-in-memory": "node src/backend/server.js --in-memory"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinktecture/c9-xplatform.git"
+  },
+  "author": "Thinktecture AG",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/thinktecture/c9-xplatform/issues"
+  },
+  "homepage": "https://github.com/thinktecture/c9-xplatform#readme"
+}

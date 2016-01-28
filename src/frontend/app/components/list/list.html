@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Customers</h3>
+                <div class="box-tools">
+                    <button class="btn btn-box-tool" [routerLink]="['Create']">Add a customer</button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="well" *ngIf="records && records.length === 0">No customers yet! Go and create one</div>
+                <table class="table table-bordered" *ngIf="records && records.length">
+                    <tbody>
+                        <tr>
+                            <th>Lastname</th>
+                            <th>Firstname</th>
+                            <th>Age</th>
+                            <th class="text-center"></th>
+
+                        </tr>
+                        <tr *ngFor="#record of records">
+                            <td><a [routerLink]="['Detail', {id: record.id}]">{{record.lastName}}</a></td>
+                            <td>{{record.firstName}}</td>
+                            <td>{{record.age}}</td>
+                            <td class="text-center">
+                                <a (click)="deleteCustomer(record);">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+{
+    "name": "channel9-crm",
+    "version": "0.0.1",
+    "main": "app.asar/index.js"
+}
