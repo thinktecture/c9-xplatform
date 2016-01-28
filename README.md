@@ -17,15 +17,16 @@ This is the toolchain we presented in our video series:
 * You’re all set!
 
 ## Build
-* Run `npm run build-all` to build web files, desktop and mobile apps
+* Run `npm run build-all` to build all web files (i.e. CSS and TypeScript files), desktop and mobile apps
 
 ## Run
 * Run a static file server (such as `live-server`) to host the files found in `dist/frontend` 
 * Run `npm run server` to launch the server part of this demo
+* **Authentication**: Username must match password, e.g. `admin:admin`
 
 ## Deploy
 * Make sure that the backend you host is accessible from the target device (on actual devices, you will have to adjust the base URL found in `src/frontend/services/urlService.ts` from `localhost` to a local IP and rebuild the web files)
-* Use 
+* Use TACO, Ionic, Cordova or another tool to deploy the apps to mobile devices
 
 ## Dependencies
 Including, but not limited to…
