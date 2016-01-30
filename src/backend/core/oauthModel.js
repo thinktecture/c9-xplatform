@@ -58,7 +58,7 @@ function OAuthModel() {
                 });
 
                 if (!data) {
-                    return callback('Bearer token is invalid.');
+                    return callback();
                 }
 
                 callback(null, {

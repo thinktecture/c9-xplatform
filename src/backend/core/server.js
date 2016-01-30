@@ -34,6 +34,20 @@ function Server() {
         next();
     };
 
+    const oauthAuthorize = (req, res, next) => {
+        var authorize = restifyServer.oauth.authorise();
+
+        authorize(req, res, (err) => {
+            // Simply return 401 if an error has happened
+            if (err) {
+                res.send(401, err);
+                return next(err);
+            }
+
+            next();
+        });
+    };
+
     function createRestifyServer() {
         const server = restify.createServer({
             name: 'c9-xplatform-server'
@@ -93,7 +107,7 @@ function Server() {
 
     function addRoute(route, method, handler) {
         method = (method || 'get').toLowerCase();
-        restifyServer[method](route, reqGetPatch, restifyServer.oauth.authorise(), handler);
+        restifyServer[method](route, reqGetPatch, oauthAuthorize, handler);
 
         console.log('Registered route', method, route);
     }
