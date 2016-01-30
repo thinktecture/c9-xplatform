@@ -37,6 +37,9 @@ function SqliteStorage() {
     function initializeModels() {
         const customerModel = sequelize.import('../dbModels/customer.js');
         models[customerModel.name] = customerModel;
+
+        const tokenModel = sequelize.import('../dbModels/token.js');
+        models[tokenModel.name] = tokenModel;
     }
 
     function syncDatabase() {

@@ -1,14 +1,12 @@
 'use strict';
 
-const InMemoryStorage = require('../storages/inMemoryStorage').InMemoryStorage;
+const storage = require('../storages');
 
 /**
  * @public
  * @constructor
  */
 function OAuthModel() {
-    const storage = new InMemoryStorage();
-
     const sampleUser = {
         id: 1000,
         clientId: 'sample-client',
@@ -25,45 +23,51 @@ function OAuthModel() {
     };
 
     this.saveAccessToken = (accessToken, clientId, expires, user, callback) => {
-        storage.create({
-            accessToken: accessToken,
-            clientId: clientId,
-            expires: expires,
-            user: user
-        });
+        storage.get()
+            .then(s => {
+                s.token.create({
+                    accessToken: accessToken,
+                    clientId: clientId,
+                    expires: expires,
+                    user: user.id
+                });
 
-        callback();
+                callback();
+            }, callback);
     };
 
     this.grantTypeAllowed = (clientId, grantType, callback) => {
         callback(null, grantType === 'password' && clientId === sampleUser.clientId);
     };
 
+
     this.getAccessToken = (bearerToken, callback) => {
-        const list = storage.findAll();
+        storage.get()
+            .then(s => s.token.findAll())
+            .then(list => {
+                let data;
 
-        let data;
+                list.forEach(item => {
+                    if (data) {
+                        return;
+                    }
 
-        list.forEach(item => {
-            if (data) {
-                return;
-            }
+                    if (item.accessToken === bearerToken) {
+                        data = item;
+                    }
+                });
 
-            if (item.accessToken === bearerToken) {
-                data = item;
-            }
-        });
+                if (!data) {
+                    return callback('Bearer token is invalid.');
+                }
 
-        if (!data) {
-            return callback('Bearer token is invalid.');
-        }
-
-        callback(null, {
-            accessToken: data.id,
-            clientId: data.clientId,
-            expires: data.expires,
-            userId: data.user
-        });
+                callback(null, {
+                    accessToken: data.id,
+                    clientId: data.clientId,
+                    expires: data.expires,
+                    userId: data.user
+                });
+            }, callback);
     };
 
     this.getUser = (username, password, callback) => {

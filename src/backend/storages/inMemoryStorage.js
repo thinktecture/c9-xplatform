@@ -15,13 +15,13 @@ function InMemoryStorage() {
     }
 
     this.findById = id => {
-        return internalStorage[id];
+        return Promise.resolve(internalStorage[id]);
     };
 
     this.create = (data) => {
         data.id = counter++;
         internalStorage[data.id] = data;
-        return internalStorage[data.id];
+        return Promise.resolve(internalStorage[data.id]);
     };
 
     this.destroy = condition => {
@@ -31,17 +31,18 @@ function InMemoryStorage() {
 
         if (internalStorage[id]) {
             delete internalStorage[id];
-            return true;
+            return Promise.resolve();
         }
 
-        return false;
+        return Promise.reject();
     };
 
     this.update = (data, condition) => {
         validateWhereConditionForId(condition);
 
         data.id = condition.where.id;
-        return internalStorage[condition.where.id] = data;
+        internalStorage[condition.where.id] = data;
+        return Promise.resolve(internalStorage[condition.where.id]);
     };
 
     this.findAll = () => {
@@ -51,7 +52,7 @@ function InMemoryStorage() {
             result.push(internalStorage[item]);
         });
 
-        return result;
+        return Promise.resolve(result);
     };
 }
 
@@ -61,8 +62,9 @@ function InMemoryStorage() {
  */
 function InMemoryStorageWrapper() {
     this.initialize = () => {
-        let models = {
-            customer: new InMemoryStorage()
+        const models = {
+            customer: new InMemoryStorage(),
+            token: new InMemoryStorage()
         };
 
         return Promise.resolve(models);
