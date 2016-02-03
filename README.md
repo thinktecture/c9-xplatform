@@ -17,7 +17,7 @@ This is the toolchain we presented in our video series:
 * You’re all set!
 
 ## Build
-* Run `npm run build-all` to build all web files (i.e. CSS and TypeScript files), desktop and mobile apps
+* Run `npm run build` to build all web files (i.e. CSS and TypeScript files), desktop and mobile apps
 
 ## Run
 * Run a static file server (such as `live-server`) to host the files found in `dist/frontend` 
@@ -32,7 +32,7 @@ This is the toolchain we presented in our video series:
 Including, but not limited to…
 
 * [AdminLTE](https://github.com/almasaeed2010/AdminLTE), open source admin dashboard and control panel theme
-  * [jQuery](), yeah – unfortunately.
+  * [jQuery](https://jquery.com), yeah – unfortunately.
 * [Angular 2](https://angular.io), Single-Page Web Application (SPA) framework for the modern web
 * [Fastclick](https://github.com/ftlabs/fastclick), eliminates the infamous 300 ms lag on devices using the iPhone-style Touch Events
 * [Font Awesome](https://fortawesome.github.io/Font-Awesome/), the iconic font and CSS toolkit
