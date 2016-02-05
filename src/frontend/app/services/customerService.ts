@@ -8,6 +8,9 @@ import {SecurityService} from './securityService';
 
 @Injectable()
 export class CustomerService {
+    /**
+     * API base URL
+     */
     private baseUrl: string;
 
     constructor(public http: Http,
@@ -16,6 +19,10 @@ export class CustomerService {
         this.baseUrl = urlService.getApiUrl();
     }
 
+    /**
+     * load all customers
+     * @returns {Observable<Customer>} an observable with customers
+     */
     public getCustomers(): Observable<Array<Customer>> {
         const endpoint = this.baseUrl + 'customers';
         const headers = this.createHeaders();
@@ -26,6 +33,11 @@ export class CustomerService {
             .map(r => r.json());
     }
 
+    /**
+     * load a customer by his/her id
+     * @param {string} id
+     * @returns {Observable<R>}
+     */
     public getCustomer(id: string): Observable<Customer> {
         const endpoint = this.baseUrl + 'customer/' + id;
         const headers = this.createHeaders();
@@ -36,14 +48,29 @@ export class CustomerService {
             .map(r => r.json());
     }
 
+    /**
+     * store a new customer in backend
+     * @param {Customer} customer new customer to store
+     * @returns {Observable<Customer>}
+     */
     public createCustomer(customer: Customer): Observable<Customer> {
         return this.createOrUpdateCustomer(customer);
     }
 
+    /**
+     * update an existing customer
+     * @param {Customer} customer existing customer to update
+     * @returns {Observable<Customer>}
+     */
     public updateCustomer(customer: Customer): Observable<Customer> {
         return this.createOrUpdateCustomer(customer);
     }
 
+    /**
+     * delete a given customer
+     * @param {Customer} customer customer to delete
+     * @returns {Observable<R>}
+     */
     public deleteCustomer(customer: Customer) {
         const headers = this.createHeaders();
         return this.http.delete(`${this.baseUrl}customer/${customer.id}`, {
@@ -52,6 +79,11 @@ export class CustomerService {
             .map(res=> res.json());
     }
 
+    /**
+     * create or update a customer
+     * @param {Customer} customer the customer instance
+     * @returns {Observable<Customer>}
+     */
     private createOrUpdateCustomer(customer: Customer): Observable<Customer> {
         const endpoint = this.baseUrl + 'customer';
         const headers = this.createHeaders();
@@ -73,6 +105,10 @@ export class CustomerService {
         return httpEndpoint.map(r => r.json());
     }
 
+    /**
+     * create HTTP headers for authenticated calls
+     * @returns {Headers}
+     */
     private createHeaders(): Headers {
         const headers = new Headers();
         headers.append('Authorization', `Bearer ${this.securityService.accessToken}`);

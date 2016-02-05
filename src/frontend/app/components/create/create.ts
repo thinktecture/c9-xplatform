@@ -8,23 +8,23 @@ import Timer = NodeJS.Timer;
     directives: [ROUTER_DIRECTIVES],
     templateUrl: 'app/components/create/create.html'
 })
-export class CreateComponent{
-    private customer: Customer;
-    public message: string;
-    public messageTimeout: Timer;
+export class CreateComponent {
+    private customer:Customer;
+    public message:string;
+    public messageTimeout:Timer;
 
-    constructor(private _router: Router, private _customerService: CustomerService){
+    constructor(private _router:Router, private _customerService:CustomerService) {
         this.customer = new Customer();
     }
 
-    onSubmitted(){
+    onSubmitted() {
         this._customerService.createCustomer(this.customer).subscribe(c => {
             this.customer = c;
             this._router.navigate(['List']);
         }, () => this.showMessage('Could not save customer.'));
     }
 
-    private showMessage(m: string): void {
+    private showMessage(m:string):void {
         this.message = m;
 
         this.messageTimeout = setTimeout(() => {
