@@ -8,7 +8,11 @@ import {SecurityService} from '../../services/securityService';
     directives: [ROUTER_DIRECTIVES],
     templateUrl: 'app/components/sidebar/sidebar.html'
 })
-export class SidebarComponent {
-    constructor() {
-    }
+export class SidebarComponent{
+
+    constructor(
+        private securityService: SecurityService,
+        private router: Router
+    )
+    { }
 }

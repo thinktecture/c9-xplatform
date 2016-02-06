@@ -55,6 +55,7 @@ export class SecurityService {
                 this.accessToken = result.access_token;
                 this.isLoggedIn = true;
                 this.localStorageService.set(this.userStorageKey, userName);
+
                 if (rememberMe) {
                     this.localStorageService.set(this.tokenStorageKey, this.accessToken);
                 }
