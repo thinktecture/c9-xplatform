@@ -19,27 +19,27 @@ var tasks = {
     sourceMaps: require('gulp-sourcemaps')
 };
 
-
 var gulpTasks = require('require-dir')(config.folders.gulptasks);
 
 for (var gulpTask in gulpTasks) {
     gulpTasks[gulpTask].init(gulp, config, tasks);
 }
 
-gulp.task('build', function(done){
+gulp.task('build', function (done) {
     tasks.runSequence('build-web', 'build-desktop', done);
 });
 
-gulp.task('default', function(done) {
+gulp.task('default', function (done) {
     console.log('');
     console.log('execute one of the public tasks');
     console.log('');
     console.log(' - build: builds all platforms');
-    for(var gulpTask in gulpTasks){
+
+    for (var gulpTask in gulpTasks) {
         var documentations = gulpTasks[gulpTask].docs;
+
         for (var i = 0; i < documentations.length; i++) {
             console.log(' - ' + documentations[i].name + ': ' + documentations[i].description);
         }
-
     }
 });

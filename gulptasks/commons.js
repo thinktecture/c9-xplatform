@@ -1,9 +1,8 @@
-! function(module) {
+!function (module) {
     'use strict';
 
     function RegisterTasks(gulp, config, tasks) {
-
-        gulp.task('clean', function(done) {
+        gulp.task('clean', function (done) {
             tasks.del.sync(config.files.allDistFiles, {
                 force: true
             });
@@ -15,5 +14,4 @@
         init: RegisterTasks,
         docs: []
     };
-
 }(module);

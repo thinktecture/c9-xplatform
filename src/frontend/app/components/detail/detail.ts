@@ -1,10 +1,10 @@
 import {Component, OnDestroy} from 'angular2/core';
 import {ROUTER_DIRECTIVES, Router, RouteParams} from 'angular2/router';
 
-import {Customer} from '../../models/customer';
-
-import {CustomerService} from '../../services/customerService';
 import Timer = NodeJS.Timer;
+
+import {Customer} from '../../models/customer';
+import {CustomerService} from '../../services/customerService';
 
 @Component({
     selector: 'detail',
@@ -12,15 +12,13 @@ import Timer = NodeJS.Timer;
     templateUrl: 'app/components/detail/detail.html'
 })
 export class DetailComponent implements OnDestroy {
-    public customer: Customer;
-    public message: string;
-    public messageTimeout: Timer;
+    public customer:Customer;
+    public message:string;
+    public messageTimeout:Timer;
 
-    constructor(
-        private params: RouteParams,
-        private router: Router,
-        private customerService: CustomerService)
-    {
+    constructor(private params:RouteParams,
+                private router:Router,
+                private customerService:CustomerService) {
         const customerId = params.get('id');
 
         if (customerId) {
@@ -31,7 +29,7 @@ export class DetailComponent implements OnDestroy {
         }
     }
 
-    public onSubmitted(): void {
+    public onSubmitted():void {
         let stream;
 
         if (this.customer.id) {
@@ -48,7 +46,7 @@ export class DetailComponent implements OnDestroy {
         }, () => this.showMessage('Could not save customer.'));
     }
 
-    private showMessage(m: string): void {
+    private showMessage(m:string):void {
         this.message = m;
 
         this.messageTimeout = setTimeout(() => {
@@ -57,7 +55,7 @@ export class DetailComponent implements OnDestroy {
         }, 5000);
     }
 
-    ngOnDestroy(): any {
+    ngOnDestroy():any {
         if (this.messageTimeout) {
             clearTimeout(this.messageTimeout);
         }

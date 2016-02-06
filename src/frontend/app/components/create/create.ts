@@ -1,8 +1,10 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
+
+import Timer = NodeJS.Timer;
+
 import {Customer} from '../../models/customer';
 import {CustomerService} from '../../services/customerService';
-import Timer = NodeJS.Timer;
 
 @Component({
     directives: [ROUTER_DIRECTIVES],
@@ -32,5 +34,4 @@ export class CreateComponent {
             this.messageTimeout = undefined;
         }, 5000);
     }
-
 }

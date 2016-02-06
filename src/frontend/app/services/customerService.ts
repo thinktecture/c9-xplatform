@@ -1,9 +1,10 @@
 import {Inject, Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
+import {Headers, URLSearchParams} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
+
 import {Customer} from '../models/customer';
 import {UrlService} from './urlService';
-import {Headers, URLSearchParams} from 'angular2/http';
 import {SecurityService} from './securityService';
 
 @Injectable()
@@ -11,11 +12,11 @@ export class CustomerService {
     /**
      * API base URL
      */
-    private baseUrl: string;
+    private baseUrl:string;
 
-    constructor(public http: Http,
-                public urlService: UrlService,
-                public securityService: SecurityService) {
+    constructor(public http:Http,
+                public urlService:UrlService,
+                public securityService:SecurityService) {
         this.baseUrl = urlService.getApiUrl();
     }
 
@@ -23,7 +24,7 @@ export class CustomerService {
      * load all customers
      * @returns {Observable<Customer>} an observable with customers
      */
-    public getCustomers(): Observable<Array<Customer>> {
+    public getCustomers():Observable<Array<Customer>> {
         const endpoint = this.baseUrl + 'customers';
         const headers = this.createHeaders();
 
@@ -38,7 +39,7 @@ export class CustomerService {
      * @param {string} id
      * @returns {Observable<R>}
      */
-    public getCustomer(id: string): Observable<Customer> {
+    public getCustomer(id:string):Observable<Customer> {
         const endpoint = this.baseUrl + 'customer/' + id;
         const headers = this.createHeaders();
 
@@ -53,7 +54,7 @@ export class CustomerService {
      * @param {Customer} customer new customer to store
      * @returns {Observable<Customer>}
      */
-    public createCustomer(customer: Customer): Observable<Customer> {
+    public createCustomer(customer:Customer):Observable<Customer> {
         return this.createOrUpdateCustomer(customer);
     }
 
@@ -62,7 +63,7 @@ export class CustomerService {
      * @param {Customer} customer existing customer to update
      * @returns {Observable<Customer>}
      */
-    public updateCustomer(customer: Customer): Observable<Customer> {
+    public updateCustomer(customer:Customer):Observable<Customer> {
         return this.createOrUpdateCustomer(customer);
     }
 
@@ -71,11 +72,11 @@ export class CustomerService {
      * @param {Customer} customer customer to delete
      * @returns {Observable<R>}
      */
-    public deleteCustomer(customer: Customer) {
+    public deleteCustomer(customer:Customer) {
         const headers = this.createHeaders();
         return this.http.delete(`${this.baseUrl}customer/${customer.id}`, {
-            headers: headers
-        })
+                headers: headers
+            })
             .map(res=> res.json());
     }
 
@@ -84,7 +85,7 @@ export class CustomerService {
      * @param {Customer} customer the customer instance
      * @returns {Observable<Customer>}
      */
-    private createOrUpdateCustomer(customer: Customer): Observable<Customer> {
+    private createOrUpdateCustomer(customer:Customer):Observable<Customer> {
         const endpoint = this.baseUrl + 'customer';
         const headers = this.createHeaders();
 
@@ -109,10 +110,11 @@ export class CustomerService {
      * create HTTP headers for authenticated calls
      * @returns {Headers}
      */
-    private createHeaders(): Headers {
+    private createHeaders():Headers {
         const headers = new Headers();
         headers.append('Authorization', `Bearer ${this.securityService.accessToken}`);
         headers.append('Content-Type', 'application/json');
+
         return headers;
     }
 }

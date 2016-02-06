@@ -1,11 +1,10 @@
 import {Inject, Injectable} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
-import {UrlService} from './urlService';
-import {Subscription} from 'rxjs/Subscription';
-import {LocalStorageService} from './localStorageService';
 import {Observable} from 'rxjs/Rx';
 
+import {UrlService} from './urlService';
+import {LocalStorageService} from './localStorageService';
 
 @Injectable()
 export class SecurityService {

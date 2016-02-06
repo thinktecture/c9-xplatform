@@ -16,7 +16,6 @@
                             <th>Firstname</th>
                             <th>Age</th>
                             <th class="text-center"></th>
-
                         </tr>
                         <tr *ngFor="#record of records">
                             <td><a [routerLink]="['Detail', {id: record.id}]">{{record.lastName}}</a></td>
