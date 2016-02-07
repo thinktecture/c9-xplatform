@@ -19,6 +19,9 @@ This is the toolchain we presented in our video series:
 ## Build
 * Run `npm run build` to build all web files (i.e. CSS and TypeScript files), desktop and mobile apps
 
+## Watcher
+ * Run `npm run dev` to automatically start backend, frontend and watch for frontend source changes
+
 ## Run
 * Run a static file server (such as `live-server`) to host the files found in `dist/frontend` 
 * Run `npm run server` to launch the server part of this demo
