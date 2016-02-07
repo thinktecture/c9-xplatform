@@ -1,11 +1,10 @@
 import {Inject, Injectable} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
-import {UrlService} from './urlService';
-import {Subscription} from 'rxjs/Subscription';
-import {LocalStorageService} from './localStorageService';
 import {Observable} from 'rxjs/Rx';
 
+import {UrlService} from './urlService';
+import {LocalStorageService} from './localStorageService';
 
 @Injectable()
 export class SecurityService {
@@ -56,6 +55,7 @@ export class SecurityService {
                 this.accessToken = result.access_token;
                 this.isLoggedIn = true;
                 this.localStorageService.set(this.userStorageKey, userName);
+
                 if (rememberMe) {
                     this.localStorageService.set(this.tokenStorageKey, this.accessToken);
                 }

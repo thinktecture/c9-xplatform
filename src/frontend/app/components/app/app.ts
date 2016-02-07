@@ -20,15 +20,8 @@ import {SecurityService} from '../../services/securityService';
     new Route({path: '/detail/:id', name: 'Detail', component: DetailComponent}),
     new Route({path: '/create', name: 'Create', component: CreateComponent}),
 ])
-export class AppComponent implements OnInit{
-
-
-    constructor(
-        private securityService: SecurityService
-    ) { }
-
-    ngOnInit(){
-
+export class AppComponent {
+    constructor(private securityService:SecurityService) {
     }
 
     public logout() {

@@ -6,10 +6,7 @@ import {SecurityService} from '../../services/securityService';
     selector: 'app-header',
     templateUrl: 'app/components/header/header.html'
 })
-export class HeaderComponent{
-    constructor(
-        private securityService: SecurityService
-    ){
-
+export class HeaderComponent {
+    constructor(private securityService:SecurityService) {
     }
 }

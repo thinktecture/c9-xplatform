@@ -1,22 +1,23 @@
 import {Component, OnInit} from 'angular2/core';
-import {SecurityService} from '../../services/securityService';
 import {Router} from 'angular2/router';
+
+import {SecurityService} from '../../services/securityService';
 
 @Component({
     selector: 'login',
     templateUrl: 'app/components/login/login.html'
 })
 export class LoginComponent implements OnInit {
-    public userName: string;
-    public password: string;
-    public rememberMe: boolean;
-    public errorOccurred: boolean;
+    public userName:string;
+    public password:string;
+    public rememberMe:boolean;
+    public errorOccurred:boolean;
 
-    constructor(private security: SecurityService, private router: Router) {
+    constructor(private security:SecurityService, private router:Router) {
     }
 
-    ngOnInit(){
-        if(this.security.isAuthenticated()){
+    ngOnInit() {
+        if (this.security.isAuthenticated()) {
             this.router.navigate(['List']);
         }
     }
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
 
         this.security.login(this.userName, this.password, this.rememberMe)
             .subscribe(() => this.router.navigate(['List']),
-            () => this.errorOccurred = true);
+                () => this.errorOccurred = true);
     }
 
     public forgotPassword() {
