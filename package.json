@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "angular2": "^2.0.0-beta.1",
+    "concurrently": "^1.0.0",
     "del": "^2.2.0",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
@@ -49,6 +50,9 @@
   "scripts": {
     "gulp": "./node_modules/.bin/gulp default",
     "build": "./node_modules/.bin/gulp build",
+    "watch-web": "./node_modules/.bin/gulp watch-web",
+    "live-server": "./node_modules/.bin/live-server dist/frontend",
+    "dev": "./node_modules/.bin/concurrent 'npm run watch-web' 'npm run server' 'npm run live-server'",
     "server": "node src/backend/server.js",
     "start": "node src/backend/server.js",
     "server-in-memory": "node src/backend/server.js --in-memory"

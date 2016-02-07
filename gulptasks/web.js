@@ -7,6 +7,11 @@
         gulp.task('build-web', function(done) {
             return tasks.runSequence('clean', ['private:build-app-css', 'private:build-vendor-css', 'private:build-vendor-fonts', 'private:build-app-js', 'private:build-vendor-js', 'private:copy-app-templates'], 'private:copy-images', 'private:build-index-html', done);
         });
+
+        gulp.task('watch-web', function(done){
+            gulp.watch(config.files.allFrontendSources, ['build-web']);
+        });
+
         gulp.task('private:build-vendor-css', function(done) {
             return gulp.src(config.files.sources.vendorCssFiles)
                 .pipe(tasks.concat(config.fileNames.vendorCss))

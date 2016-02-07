@@ -52,6 +52,7 @@
                 path.join('dist', 'frontend', 'scripts', 'dashboard.js'),
                 path.join('dist', 'frontend', 'scripts', 'fastclick.js')
             ],
+            allFrontendSources: path.join('src', 'frontend','**','*'),
             allDistFiles: path.join('dist', '**', '*'),
             sources: {
                 asarFiles: [path.join('.temp','electron', '**', '*'), '!.temp/electron/package.json'],
