@@ -62,7 +62,7 @@
     "url": "git+https://github.com/thinktecture/c9-xplatform.git"
   },
   "author": "Thinktecture AG <office@thinktecture.com>",
-  "license": "UNLICENSED",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/thinktecture/c9-xplatform/issues"
   },
